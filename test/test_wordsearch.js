@@ -16,8 +16,14 @@ describe("#wordSearch()", function() {
       ['O', 'D', 'C', 'A', 'K', 'U', 'A', 'S'],
       ['E', 'Z', 'K', 'F', 'Q', 'U', 'A', 'L'],
     ], 'FRANK')
-
+    
     assert.isFalse(result);
+  });
+  
+  it("should return undefined if array is empty or input value is undefined", function() {
+    const result = wordSearch([], undefined)
+  
+    assert.isUndefined(result);
   });
 
   it("should return true if the word is present (horizontal left-to-right)", function() {
@@ -114,12 +120,6 @@ describe("#wordSearch()", function() {
     ], 'APPLE')
 
     assert.isTrue(result);
-  });
-
-  it("should return true if array is empty or input value is undefined", function() {
-    const result = wordSearch([], undefined)
-
-    assert.isUndefined(result);
   });
 
 });

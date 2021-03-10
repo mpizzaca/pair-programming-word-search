@@ -30,13 +30,13 @@ const wordSearch = (letters, word) => {
 		if (newArr.join('').includes(word)) return true;
 	}
 	
-	// check if vertial top-to-bottom
+	// check if vertical top-to-bottom
 	const verticalJoin = transpose(letters).map(ls => ls.join(''));
 	for (let l of verticalJoin) {
 		if (l.includes(word)) return true;
 	}
 
-	// check if vertial bottom-to-top
+	// check if vertical bottom-to-top
 	for (let i = 0; i < letters[0].length; i++) {
 		const arr = [];
 		for (let j = letters.length - 1; j >= 0; j--) {
@@ -45,6 +45,10 @@ const wordSearch = (letters, word) => {
 		if (arr.join('').includes(word)) return true;
 	}
 	
+	// ***
+	// after this point, inner arrays remain reversed due to ls.reverse() call below
+	// ***
+
 	// check if horizonal right-to-left
 	const reverseJoin = letters.map(ls => ls.reverse().join(''));
 	for (let l of reverseJoin) {
