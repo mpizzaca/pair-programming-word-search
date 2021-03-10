@@ -37,14 +37,15 @@ const wordSearch = (letters, word) => {
 	}
 
 	// check if vertical bottom-to-top
-	for (let i = 0; i < letters[0].length; i++) {
-		const arr = [];
-		for (let j = letters.length - 1; j >= 0; j--) {
-			arr.push(letters[j][i]);
-		}
-		if (arr.join('').includes(word)) return true;
+	// reverse letters for this
+	letters.reverse();
+	const verticalReverseJoin = transpose(letters).map(ls => ls.join(''));
+	for (let l of verticalReverseJoin) {
+		if (l.includes(word)) return true;
 	}
-	
+	// undo above reverse
+	letters.reverse();
+
 	// ***
 	// after this point, inner arrays remain reversed due to ls.reverse() call below
 	// ***
